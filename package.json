@@ -1,0 +1,22 @@
+{
+  "name": "@papaloutre_api/authentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrienMS/Papaloutre_API_Authentication.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Adrien Musserotte (adrien.musserotte@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdrienMS/Papaloutre_API_Authentication/issues"
+  },
+  "homepage": "https://github.com/AdrienMS/Papaloutre_API_Authentication#readme"
+}
