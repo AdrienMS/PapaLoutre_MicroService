@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/AdrienMS/Papaloutre_API_Authentication/issues"
   },
-  "homepage": "https://github.com/AdrienMS/Papaloutre_API_Authentication#readme"
+  "homepage": "https://github.com/AdrienMS/Papaloutre_API_Authentication#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.0",
+    "pg": "^7.11.0"
+  }
 }
