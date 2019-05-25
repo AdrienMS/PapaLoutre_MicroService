@@ -10,4 +10,4 @@ RUN yarn
 
 COPY . /home/app
 
-CMD node index.js
+CMD yarn start
