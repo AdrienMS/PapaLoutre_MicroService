@@ -14,8 +14,26 @@ const client = new Client({
 });
 
 client.connect()
-    .then(() => console.log('connected'))
+    .then(() => {
+        console.log('connected');
+        client.query('CREATE TABLE IF NOT EXISTS \
+            auth(id serial PRIMARY KEY, \
+                username VARCHAR (50) UNIQUE NOT NULL, \
+                password VARCHAR (355) NOT NULL, \
+                email VARCHAR (355) UNIQUE NOT NULL, \
+                created_on TIMESTAMP NOT NULL, \
+                last_login TIMESTAMP)\
+        ', (err, res) => {
+            if (err) {
+                console.err(err);
+            } else {
+                console.info(res);
+            }
+            client.end();
+        });
+    })
     .catch(() => console.log('error while connecting'));
+
 
 server.listen(PORT, () => console.log(`Server running on ${PORT}`));
 
