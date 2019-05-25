@@ -10,12 +10,13 @@ const client = new Client({
     port: process.env.PG_PORT,
     user: process.env.PG_USER,
     password: process.env.PG_PASSWORD,
-    database: process.env.PG_DB
+    database: process.env.PG_DB,
 });
 
 client.connect()
     .then(() => {
-        console.log('connected');
+        console.info('connected');
+        // eslint-disable-next-line no-multi-str
         client.query('CREATE TABLE IF NOT EXISTS \
             auth(id serial PRIMARY KEY, \
                 username VARCHAR (50) UNIQUE NOT NULL, \
@@ -25,16 +26,16 @@ client.connect()
                 last_login TIMESTAMP)\
         ', (err, res) => {
             if (err) {
-                console.err(err);
+                console.error(err);
             } else {
                 console.info(res);
             }
             client.end();
         });
     })
-    .catch(() => console.log('error while connecting'));
+    .catch(() => console.error('error while connecting'));
 
 
-server.listen(PORT, () => console.log(`Server running on ${PORT}`));
+server.listen(PORT, () => console.info(`Server running on ${PORT}`));
 
 server.get('/', (req, res) => res.status(200).send('hello'));
