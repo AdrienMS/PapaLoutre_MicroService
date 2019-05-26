@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel index.js -d dist && babel .env -d dist && babel package.json -d dist && babel server -d dist/server",
-    "start": "yarn build && node dist/index.js",
+    "build": "gulp",
+    "start": "gulp serve",
+    "start:debug": "cross-env DEBUG=authentification:* yarn start",
+    "lint": "esw *.js server --color",
+    "lint:watch": "yarn lint -- --watch",
     "test": "nyc --reporter=json --reporter=text mocha ./server/tests/misc.test.js --exit"
   },
   "repository": {
@@ -22,8 +25,10 @@
   },
   "homepage": "https://github.com/AdrienMS/Papaloutre_API_Authentication#readme",
   "dependencies": {
+    "del": "^4.1.1",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
+    "gulp": "^4.0.2",
     "pg": "^7.11.0"
   },
   "devDependencies": {
@@ -34,10 +39,20 @@
     "@istanbuljs/nyc-config-babel": "^2.1.1",
     "babel-plugin-istanbul": "^5.1.4",
     "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",
+    "eslint-watch": "^5.1.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-env": "^0.4.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-nodemon": "^2.4.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sourcemaps": "^2.6.5",
     "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
     "nyc": "^14.1.1",
     "supertest": "^4.0.2"
   }
