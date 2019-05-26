@@ -3,7 +3,7 @@
 .gitignore
 
 # Build step outputs
-build
+dist
 .happypack
 
 # Docker configuration

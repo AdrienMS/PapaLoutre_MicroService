@@ -35,7 +35,10 @@ client.connect()
     })
     .catch(() => console.error('error while connecting'));
 
-
-server.listen(PORT, () => console.info(`Server running on ${PORT}`));
-
 server.get('/', (req, res) => res.status(200).send('hello'));
+
+if (!module.parent) {
+    server.listen(PORT, () => console.info(`Server running on ${PORT}`));
+}
+
+module.exports = server;
