@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Client } = require('pg');
+const logger = require('../lib/logger/logger');
 
 const client = new Client({
     host: process.env.PG_HOST,
@@ -22,14 +23,14 @@ client.connect()
                 last_login TIMESTAMP)',
         (err, res) => {
             if (err) {
-                console.error(err);
+                logger.error(`An error occured in database : ${err}`);
             } else {
-                console.info(res);
+                logger.info(res);
             }
             client.end();
         });
     })
-    .catch(() => console.error('error while connecting'));
+    .catch(() => logger.error('error while connecting'));
 
 
 module.exports = client;
