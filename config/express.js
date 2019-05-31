@@ -6,6 +6,7 @@ const express = require('express');
 const helmet = require('helmet');
 const methodOverride = require('method-override');
 const errorHandling = require('../lib/error/index');
+const routes = require('../app/routes/index');
 
 const app = express();
 
@@ -23,11 +24,11 @@ app.use(helmet());
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());
 
+// mount all routes on /api path
+app.use('/api', routes);
+
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
-    const notFoundError = errorHandling.commonErrors.ResourceNotFoundError(`Can not get ${req.url}`);
-    return next(notFoundError);
-});
+app.use((req, res, next) => next({ status: 404, message: `Can not found ${req.url}` }));
 
 // error handler
 app.use(errorHandling.handling);

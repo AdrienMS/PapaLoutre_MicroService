@@ -3,10 +3,7 @@ require('dotenv').config();
 const db = require('./config/database');
 const server = require('./config/express');
 
-const PORT = 3000;
-
-
-server.get('/', (req, res) => res.status(200).send('hello'));
+const PORT = process.env.PORT || 3000;
 
 if (!module.parent) {
     server.listen(PORT, () => console.info(`Server running on ${PORT}`));
