@@ -21,6 +21,12 @@ docker-compose up --force-recreate
 
 The next time, just run docker compose normally
 
+if you add changes, run the following command so that docker can take them into account :
+
+```sh
+docker-compose up --build
+```
+
 ## Without Docker
 
 You have to install [postgres](https://www.postgresql.org) locally.

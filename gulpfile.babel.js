@@ -18,10 +18,13 @@ gulp.task('clean', (done) => {
 });
 
 // Copy non-js files to dist
-gulp.task('copy', () => gulp
-    .src(paths.nonJs)
-    .pipe(plugins.newer('dist'))
-    .pipe(gulp.dest('dist')));
+gulp.task('copy', (done) => {
+    gulp
+        .src(paths.nonJs)
+        .pipe(plugins.newer('dist'))
+        .pipe(gulp.dest('dist'));
+    done();
+});
 
 // Compile to ES6 and copy to dist
 gulp.task('babel', () => gulp
