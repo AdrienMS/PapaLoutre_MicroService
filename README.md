@@ -1,7 +1,18 @@
-# Papa Loutre API Authentication
+# Papa Loutre Rest API base
 ## Overview
 
-This is the authentication service of Papa Loutre. This is a part of a micro-service API.
+This is the rest API base for microservice API of Papa Loutre.
+This works with :
+  - NodeJS 12.3.1
+  - Express 4.17.0
+  - PostgreSQL 11.2
+  - Gulp 4.0.2
+  - Eslint 5.16 (AirBnB)
+  - nyc 14.1.1
+  - mocha 6.1.4
+  - chai 4.2.0
+  - Babel 7.4.4
+  - Docker
 
 
 # Getting Started
