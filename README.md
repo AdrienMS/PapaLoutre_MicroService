@@ -12,6 +12,7 @@ This works with :
   - mocha 6.1.4
   - chai 4.2.0
   - Babel 7.4.4
+  - Swagger UI Express 4.0.6
   - Docker
 
 
@@ -32,15 +33,38 @@ docker-compose up --force-recreate
 
 The next time, just run docker compose normally
 
-if you add changes, run the following command so that docker can take them into account :
+If you add changes, run the following command so that docker can take them into account :
 
 ```sh
 docker-compose up --build
 ```
 
+Then, the node server will run on localhost:3000 and the postgres on localhost:5432
+
 ## Without Docker
 
 You have to install [postgres](https://www.postgresql.org) locally.
+
+Then you have to create an admin and a database :
+
+```sh
+psql -U postgres
+```
+
+```postgres
+CREATE DATABASE auth;
+CREATE ROLE auth_admin password 'auth' login;
+GRANT ALL ON DATABASE auth TO auth_admin WITH GRANT OPTION;
+```
+
+You can access to you database with your admin role like this:
+
+```bash
+psql -U auth_admin auth
+```
+
+Install [node](https://nodejs.org/en/)
+
 
 Install yarn:
 
@@ -65,3 +89,5 @@ Start server:
 ```sh
 yarn start
 ```
+
+The server will start on localhost:3000
