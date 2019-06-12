@@ -4,9 +4,11 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const express = require('express');
 const helmet = require('helmet');
+const swaggerUI = require('swagger-ui-express');
 const methodOverride = require('method-override');
 const errorHandling = require('../lib/error/index');
 const routes = require('../app/routes/index');
+const swaggerDocument = require('./swagger.json');
 
 const app = express();
 
@@ -25,7 +27,9 @@ app.use(helmet());
 app.use(cors());
 
 // mount all routes on /api path
+app.use('/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/api', routes);
+app.use('/', (req, res) => res.redirect('/documentation'));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => next({ status: 404, message: `Can not found ${req.url}` }));

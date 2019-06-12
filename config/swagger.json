@@ -1,0 +1,88 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Papa Loutre API example",
+        "description": "Papa Loutre API example",
+        "license": {
+            "name": "ISC",
+            "url": "http://opensource.org/licenses/ISC"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Example",
+            "description": "Example of API routes"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/example": {
+            "post": {
+                "tags": [
+                    "Example"
+                ],
+                "description": "Just an example",
+                "parameters": [
+                    {
+                        "name": "example",
+                        "in": "body",
+                        "description": "Example for post",
+                        "schema": {
+                            "$ref": "#/definitions/Example"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Example is created",
+                        "schema": {
+                            "$ref": "#/definitions/Example"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Example": {
+          "required": [
+            "email",
+            "_id"
+          ],
+          "properties": {
+            "_id": {
+              "type": "string",
+              "uniqueItems": true
+            },
+            "email": {
+              "type": "string",
+              "uniqueItems": true
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            }
+          }
+        },
+        "Examples": {
+          "type": "array",
+          "$ref": "#/definitions/Example"
+        }
+    }
+}

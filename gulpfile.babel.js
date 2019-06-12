@@ -8,6 +8,7 @@ const plugins = gulpLoadPlugins();
 const paths = {
     js: ['./**/*.js', '!dist/**', '!node_modules/**', '!coverage/**'],
     nonJs: ['./package.json', './.env'],
+    swagger: './config/swagger.json',
     tests: './server/tests/*.js',
 };
 
@@ -23,6 +24,10 @@ gulp.task('copy', (done) => {
         .src(paths.nonJs)
         .pipe(plugins.newer('dist'))
         .pipe(gulp.dest('dist'));
+    gulp
+        .src(paths.swagger)
+        .pipe(plugins.newer('dist'))
+        .pipe(gulp.dest('dist/config'));
     done();
 });
 
