@@ -1,6 +1,5 @@
 require('dotenv').config();
 // eslint-disable-next-line no-unused-vars
-const db = require('./config/database');
 const server = require('./config/express');
 
 const PORT = process.env.PORT || 3000;
