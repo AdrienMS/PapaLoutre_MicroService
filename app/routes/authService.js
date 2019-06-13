@@ -12,9 +12,14 @@ router.get('/auth', (req, res, next) => {
             res.send(resp.data);
         })
         .catch((err) => {
-            const error = err.response.data;
-            const msg = `${req.url} : ${error.message !== undefined && error.message !== null ? error.message : error.name}`;
-            next({ status: error.httpCode, message: msg });
+            console.info(`DATA : ${err}`);
+            if (err.response) {
+                const error = err.response.data;
+                const msg = `${req.url} : ${error.message !== undefined && error.message !== null ? error.message : error.name}`;
+                next({ status: error.httpCode, message: msg });
+            } else {
+                next({ status: 503, message: `The server ${BASE_URL}/api is not available` });
+            }
         });
 });
 
