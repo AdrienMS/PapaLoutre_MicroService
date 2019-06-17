@@ -6,7 +6,7 @@ const del = require('del');
 const plugins = gulpLoadPlugins();
 
 const paths = {
-    js: ['./**/*.js', '!dist/**', '!node_modules/**', '!coverage/**'],
+    js: ['./**/*.js', '!dist/**', '!node_modules/**', '!coverage/**', '!services/**'],
     nonJs: ['./package.json', './.env'],
     swagger: './config/swagger.json',
     tests: './server/tests/*.js',

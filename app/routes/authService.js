@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const apiAdapter = require('../../config/apiAdapter');
 
 const router = express.Router();
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = process.env.AUTH_URL;
 const api = apiAdapter(BASE_URL);
 
 // eslint-disable-next-line no-unused-vars

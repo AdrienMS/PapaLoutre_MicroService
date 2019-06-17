@@ -1,7 +1,35 @@
 version: "3"
 services:
-  app:
+  api-gateway:
+    container_name: api-gateway
     build: .
     ports:
       - "3000:3000"
       - "9229:9229"
+    depends_on:
+      - authentication
+    links:
+      - authentication
+
+  authentication:
+    container_name: authentication
+    build:
+      context: ./services/Authentication/
+      dockerfile: Dockerfile
+    depends_on:
+      - authentication-postgres
+    ports:
+      - "3001:3001"
+      - "9230:9230"
+    links:
+      - authentication-postgres
+
+  authentication-postgres:
+    container_name: authentication-postgres
+    image: postgres:11.2-alpine
+    restart: always
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: auth_admin
+      POSTGRES_DB: auth
+      POSTGRES_PASSWORD: auth
