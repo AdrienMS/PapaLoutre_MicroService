@@ -66,16 +66,10 @@ psql -U auth_admin auth
 Install [node](https://nodejs.org/en/)
 
 
-Install yarn:
-
-```js
-npm install -g yarn
-```
-
 Install dependencies:
 
 ```sh
-yarn
+npm install
 ```
 
 Set environment (vars):
@@ -87,7 +81,7 @@ cp env.example .env
 Start server:
 
 ```sh
-yarn start
+npm start
 ```
 
 The server will start on localhost:3000
