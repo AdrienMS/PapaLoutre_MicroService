@@ -17,6 +17,16 @@ This works with :
 
 
 # Getting Started
+## Dependencies
+
+All services are in differents repositories.
+You have to clone all this repositories in services folder.
+
+### Authentication
+```sh
+git clone https://github.com/AdrienMS/PapaLoutre_Authentication.git
+```
+
 ## With Docker
 
 Run docker compose:
@@ -42,26 +52,6 @@ docker-compose up --build
 Then, the node server will run on localhost:3000 and the postgres on localhost:5432
 
 ## Without Docker
-
-You have to install [postgres](https://www.postgresql.org) locally.
-
-Then you have to create an admin and a database :
-
-```sh
-psql -U postgres
-```
-
-```postgres
-CREATE DATABASE auth;
-CREATE ROLE auth_admin password 'auth' login;
-GRANT ALL ON DATABASE auth TO auth_admin WITH GRANT OPTION;
-```
-
-You can access to you database with your admin role like this:
-
-```bash
-psql -U auth_admin auth
-```
 
 Install [node](https://nodejs.org/en/)
 
