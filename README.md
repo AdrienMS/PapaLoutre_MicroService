@@ -1,7 +1,7 @@
-# Papa Loutre API Gateway
+# Papa Loutre Micro Service
 ## Overview
 
-This is the API Gateway for microservice API of Papa Loutre.
+This is the microservice API of Papa Loutre.
 This works with :
   - NodeJS 12.3.1
   - Express 4.17.0
